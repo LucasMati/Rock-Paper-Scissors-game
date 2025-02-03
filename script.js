@@ -5,36 +5,51 @@ const rules = {
     paper: { beats: "rock" },
     scissors: { beats: "paper" }
 };
-const rockButton = document.createElement('button');
-const paperButton = document.createElement('button');
-const scissorsButton = document.createElement('button');
+const rockButton = document.getElementById('rockButton');
+const paperButton = document.getElementById('paperButton');
+const scissorsButton = document.getElementById('scissorsButton');
+const restartButton = document.getElementById('restart')
 const score = document.createElement('div');
-const roundWinner = document.createElement('div');
-const matchWinner = document.createElement('div');
 
-score.appendChild(matchWinner);
-score.appendChild(roundWinner);
+const matchWinner = document.getElementById('matchWinner');
+const humanPoints = document.getElementById('humanScore');
+const computerPoints = document.getElementById('computerScore');
+const roundWinner = document.getElementById('roundWinner');
+let imgHuman = document.getElementById('humanImg');
+let imgComputer = document.getElementById('computerImg')
 
-rockButton.textContent = "Rock";
-paperButton.textContent = "Paper";
-scissorsButton.textContent = "Scissors";
 
-document.body.appendChild(rockButton);
-document.body.appendChild(paperButton);
-document.body.appendChild(scissorsButton);
-document.body.appendChild(score);
-document.body.appendChild(roundWinner);
-document.body.appendChild(matchWinner);
+
+
 
 
 function getComputerChoice(max){
     let rand = Math.floor(Math.random()*max);
+    console.log("Computer Choice (Random Number):", rand); // Depuración
     return options[rand]
     
 }
-
+function getComputerImg(computerChoice){
+    if(computerChoice === "rock"){
+        imgComputer.src = "rock.png"
+    }
+    else if(computerChoice === "paper"){
+        imgComputer.src = "paper.png"
+    }
+    else if(computerChoice === "scissors"){
+        imgComputer.src = "scissor.png"
+    }
+}
 let humanScore = 0
 let computerScore = 0
+function restartGame(){
+    document.querySelectorAll("button").forEach(btn => {
+        if (btn.id !== "restart") { // Evita deshabilitar el botón que activa la función
+            btn.disabled = true;
+        }
+    });
+}
+
 function selectWinner(humanChoice,computerChoice){
     if(humanChoice === computerChoice){
         roundWinner.textContent = "It's a tie!"
@@ -49,17 +64,21 @@ function selectWinner(humanChoice,computerChoice){
         computerScore += 1
     }
 
-    score.textContent = `Your Score: ${humanScore} Computer Score: ${computerScore}`
-    
+    humanPoints.textContent = ` ${humanScore}`
+    computerPoints.textContent = ` ${computerScore}`
+
     if(humanScore === 5){
         matchWinner.textContent = "You win the match!"
         humanScore = 0
         computerScore = 0
+        restartGame()
+        
     }
     else if(computerScore === 5){
         matchWinner.textContent = "The computer wins the match!"
         humanScore = 0
         computerScore = 0
+        restartGame()
     }
 
 }
@@ -67,12 +86,9 @@ function playRound(humanChoice){
     
     
     const computerChoice = getComputerChoice(3);
-    
+    getComputerImg(computerChoice);
     selectWinner(humanChoice,computerChoice)
     
-
-    console.log("Your Score: ",humanScore)
-    console.log("Computer Score: ",computerScore)
 
     
 
@@ -81,12 +97,25 @@ function playRound(humanChoice){
 
 rockButton.addEventListener('click',function(){
     playRound("rock")
+    imgHuman.src = "rock.png"
     
 });
 paperButton.addEventListener('click',function(){ 
-    playRound("paper")  
+    playRound("paper") 
+    imgHuman.src = "paper.png" 
 });
 scissorsButton.addEventListener('click',function(){
     playRound("scissors")
+    imgHuman.src = "scissor.png"
    
 });
+restartButton.addEventListener('click',function(){
+    humanPoints.textContent = ` ${humanScore}`
+    computerPoints.textContent = ` ${computerScore}`
+    matchWinner.textContent = "Choose your Weapon"
+    document.querySelectorAll("button").forEach(btn => {
+        if (btn.id !== "restart") { // Evita deshabilitar el botón que activa la función
+            btn.disabled = false;
+        }
+    });
+})
