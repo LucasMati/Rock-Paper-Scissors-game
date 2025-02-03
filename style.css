@@ -111,13 +111,15 @@ header {
   margin-top: -5px;
   font-size: 30px;
   font-weight: bold;
-  font-family: "Bangers", cursive;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 #matchWinner {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
-  font-family: "Bangers", cursive;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 .fourth-container {
@@ -126,7 +128,8 @@ header {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin: 10px;
+  margin: 15px;
+  
 }
 
 button {
