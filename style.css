@@ -7,7 +7,7 @@ body {
 }
 
 .global-container {
-  margin: 50px auto 20px;
+  margin: 30px auto 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,18 +16,18 @@ body {
   border: solid 5px #FFFFFF;
   width: 500px;
   border-radius: 15px;
-  padding: 20px;
+  padding: 15px;
 }
 
 .first-container {
   font-size: 20px;
   
-  background-color: rgb(0, 0, 121);
+  background-color: rgba(20, 137, 233, 0.712);
   font-weight: bold;
   height: 100px;
   color: #f0f0f0;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
 }
@@ -118,7 +118,7 @@ header {
 #matchWinner {
   font-size: 30px;
   font-weight: bold;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family:'Courier New', Courier, monospace;
 
 }
 
@@ -161,4 +161,26 @@ button img {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border: solid 2px rgb(142, 142, 175);
   border-radius: 10px;
+}
+.footer {
+
+  min-height: 60px;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  background-color: rgba(20, 137, 233, 0.712);
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.github-logo {
+  
+  max-width: 30px;
+  max-height: 30px;
+  
 }
